@@ -1,0 +1,47 @@
+<div class="" style="width:100%;">
+
+  <div class="row" style="width:100%;">
+
+    <div class="col-md-5">
+      <div class="card  box-shadow" style="height:300px;">
+        <div class="card-header">Deductibles</div>
+        <div class="card-body">
+          <app-gaugechart [gaugeData]="deductibles"></app-gaugechart>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-5">
+      <div class="card box-shadow" style="height:300px;">
+          <div class="card-header">Health Benefits</div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush" style="margin:0 auto 0">
+              <li class="list-group-item">
+                <span class="float-left">Hospital-Inpatient</span>
+                <span class="float-right">20% Co-Insurance</span>
+              </li>
+              <li class="list-group-item">
+                <span class="float-left">Hospital-Outpatient</span>
+                <span class="float-right">40% Co-Insurance</span>                
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <!--
+    <div class="col-md-3">
+      <div class="card box-shadow" style="height:300px;">
+          <div class="card-header">Co-Insurance</div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li>One</li>
+              <li>Two</li>
+              <li>Three</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    -->
+  </div>
+
+</div>

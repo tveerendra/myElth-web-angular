@@ -1,0 +1,70 @@
+<div class="main-div bottom-shadow">
+<div class="panel">
+  <h2>{{loginType}} Login</h2>
+  <p>Please enter your email and password</p>
+  <form id="Login" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <div class="input-group">
+      <div class="input-group-prepend input-prepend-bgc">
+          <span class="input-group-text input-prepend-bgc" id="basic-u1">
+            <span class="fas fa-user text-info" aria-hidden="true"></span>            
+          </span>
+      </div>       
+      <input type="text" formControlName="userId" 
+        class="form-control" 
+        [ngClass]="{ 'is-invalid': submitted && f.userId.errors }"
+        id="inputUserId" placeholder="User Id">   
+      </div> 
+      <!--
+      <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+        <span class="invalid-feedback fas fa-exclamation-triangle" aria-hidden="true"></span>
+        <div *ngIf="f.userId.errors.required">User Id is required</div>
+      </div>    
+      -->      
+    </div>
+
+    <div class="form-group"> 
+        <div class="input-group">
+          <div class="input-group-prepend input-prepend-bgc">
+              <span class="input-group-text input-prepend-bgc" id="basic-addon1">
+                <span class="fas fa-key text-info" aria-hidden="true"></span> 
+              </span>
+          </div>       
+          <input type="{{passwordType}}" formControlName="password"
+              class="form-control input-lg" 
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+              id="password" name="password" placeholder="Password" data-toggle="password">
+            
+            <!--
+            <div *ngIf="!submitted">
+                <span *ngIf="passwordType=='password'" class="fas fa-eye fa-eye-gray" aria-hidden="true" (click)="togglePassword()"></span>
+                <span *ngIf="passwordType=='text'" class="fas fa-eye-slash fa-eye-gray" aria-hidden="true" (click)="togglePassword()"></span>
+            </div>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <span class="invalid-feedback fas fa-exclamation-triangle" aria-hidden="true"></span>
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.length">Password must be minimum 6 characters</div>
+            </div>
+            <div *ngIf="submitted && !f.password.errors">
+              <span *ngIf="passwordType=='password'" class="fas fa-eye fa-eye-gray" aria-hidden="true" (click)="togglePassword()"></span>
+              <span *ngIf="passwordType=='text'" class="fas fa-eye-slash fa-eye-gray" aria-hidden="true" (click)="togglePassword()"></span>
+            </div>     
+            -->                             
+        </div>       
+        
+    </div>
+    <div class="form-group forgot">
+      <a routerLink="">Forgot password?</a>
+    </div>
+    <div class="form-group">
+      <button class="btn rounded-btn btn-info text-white" (click)="login()">Login</button> &nbsp;
+      <button class="btn rounded-btn btn-info text-white" (click)="register()">Register</button>
+    </div>
+  </form>
+</div>
+</div>
+<div class="bottom-div bottom-shadow">
+    <div class="panel">
+        <a (click)="altLoginClicked()" class="text-primary alt-text" >{{altLogin}} Login</a>
+    </div>
+</div>

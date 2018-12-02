@@ -1,0 +1,103 @@
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.panel a { align-items: center }
+.login-form .form-control {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+}
+.main-div {
+    background: #fafafa none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 10px;
+    max-width: 100%;
+    padding: 50px 50px 20px 30px;
+}
+
+.bottom-div {
+    background: #fafafa none repeat scroll 0 0;
+    border-radius: 2px;
+    max-width: 100%;
+    padding: 20px 50px 20px 50px;
+}
+
+.login-form .form-group {
+  margin-bottom:10px;
+}
+.login-form{ text-align:center;}
+
+.login-form  .btn.btn-primary {
+  background:blue none repeat scroll 0 0;
+  border-color: blue;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+.forgot {
+  text-align: left; 
+  margin-bottom:30px;
+}
+
+.forgot a {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.login-form .btn.btn-primary.reset {
+  background: blue none repeat scroll 0 0;
+}
+
+.fa-exclamation-triangle2, .fa-eye2, .fa-eye-slash2 {
+  width: 15px;
+  margin: -30px 20px;
+  float: right;
+  font-size: 20px;
+}
+
+.fa-eye-gray{
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.rounded-btn {
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  line-height: 40px;
+  padding: 0 25px;
+}
+
+.alt-text {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.input-prepend-bgc{
+  background-color: transparent;//'#fafafa';
+}
+
+.input-append-bgc{
+  background-color: white;
+  border-left:0px;
+}
+
+.pass_show{position: relative} 
+
+.pass_show .ptxt { 
+  position: absolute; 
+  top: 50%; 
+  right: 10px; 
+  z-index: 1; 
+  color: #f36c01; 
+  margin-top: -10px; 
+  cursor: pointer; 
+  transition: .3s ease all; 
+  } 

@@ -1,0 +1,92 @@
+<div class="row" style="height:150px;">
+
+    <div class="col-md-12" style="">
+    <nav class="nav-justified ">
+        <div class="nav nav-tabs " id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="pop1-tab" href="#pop1" data-toggle="tab"  role="tab" aria-controls="pop1" aria-selected="true">
+            Search for Care
+          </a>
+          <a class="nav-item nav-link"        id="pop2-tab" href="#pop2" data-toggle="tab"  role="tab" aria-controls="pop2" aria-selected="false">
+            Search for Doctor
+          </a>
+          <a class="nav-item nav-link"        id="pop3-tab" href="#pop3" data-toggle="tab"  role="tab" aria-controls="pop3" aria-selected="false">
+            Search for Service
+          </a>
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="pop1" role="tabpanel" aria-labelledby="pop1-tab">            
+            <form class="form-group">
+            <div class="row" style="padding:30px;">
+                <span class="col-md-5 input-group search-input typeahead-class">
+                    <input type="text" class="form-control" style="border-color:#17a2b8" 
+                    name="searchForCare"
+                    placeholder="Search for Care"
+                    [class.is-invalid]="searchFailed"
+                    [(ngModel)]="srchCareModel"
+                    [ngbTypeahead]="search"
+                    [resultTemplate]="rt"
+                    [inputFormatter]="formatter" 
+                    />                     
+                    <!--
+                    <span class="input-group-append">
+                        <button class="btn btn-info  border-left-0" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </span>
+                    -->
+                    <span *ngIf="searching">Searching...</span>
+                    <div class="invalid-feedback" *ngIf="searchFailed">No services could be found.</div>
+                    <ng-template #rt let-r="result" let-t="term">
+                        <div class="row">
+                            <div class="col-3">
+                                <span [innerHTML]="r.name"></span>
+                            </div>
+                        </div>
+                    </ng-template>
+                </span>
+
+                <span class="col-md-5 input-group search-input">
+                    <input type="text" class="form-control border-right-0" style="border-color:#17a2b8" placeholder="In Location"> 
+                    <span class="input-group-append">
+                        <button class="btn btn-info  border-left-0" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </span>
+                </span>
+            </div>      
+            </form>      
+            
+        </div>
+        <div class="tab-pane fade" id="pop2" role="tabpanel" aria-labelledby="pop2-tab">
+             <div class="pt-3"></div>
+             <div class="search-input">
+                <form class="ml-3 my-auto d-inline">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-right-0" style="border-color:#17a2b8" placeholder="Search for Doctor"> 
+                        <div class="input-group-append">
+                            <button class="btn btn-info  border-left-0" type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>                
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pop3" role="tabpanel" aria-labelledby="pop3-tab">
+             <div class="pt-3"></div>
+             <div class="search-input">
+                <form class="ml-3 my-auto d-inline">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-right-0" style="border-color:#17a2b8" placeholder="Search for Service"> 
+                        <div class="input-group-append">
+                            <button class="btn btn-info  border-left-0" type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>                
+            </div>
+        </div>
+        
+      </div>    
+    </div>
+
+</div>

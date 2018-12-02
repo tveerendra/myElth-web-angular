@@ -1,0 +1,204 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row"><!--justify-content-md-center-->
+        <div class="col-md-12">
+            <h5>{{regTypeTitle}} Registration</h5>
+            <div class="card box-shadow" style="background: #f7f7f7 none repeat scroll 0 0;">
+                <div style="padding:30px 30px 30px 30px">
+                <form id="registerFormId" [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="form-content ">
+                        <div class="form-group col-md-12 row">
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-user text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="userId" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.userId.errors }"
+                                    id="inputUserId" placeholder="User Id">   
+                            </div>                            
+                        </div>
+
+                        <div class="form-group row col-md-12">
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-addon1">
+                                        <span class="fas fa-key text-info" aria-hidden="true"></span> 
+                                    </span>
+                                </div>       
+                                <input type="{{passwordType}}" formControlName="password"
+                                    class="form-control input-lg" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                    id="passwordId" name="password" placeholder="Password" data-toggle="password">
+                            </div>
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-addon1">
+                                        <span class="fas fa-key text-info" aria-hidden="true"></span> 
+                                    </span>
+                                </div>       
+                                <input type="{{passwordType}}" formControlName="confirmPassword"
+                                    class="form-control input-lg" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+                                    id="confirmPasswordId" name="password" placeholder="Confirm Password" data-toggle="password">
+                            </div>                            
+                        </div>           
+
+                        <div class="form-group row col-md-12 pad-t-20" *ngIf="regType==='provider'">
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="groupNumberId">
+                                        <span class="fas fa-users text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="groupNumber" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.groupNumber.errors }"
+                                    id="inputGnId" placeholder="Group Number">   
+                            </div>
+
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="payerId">
+                                        <span class="fas fa-user-md text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="payerID" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.payerID.errors }"
+                                    id="inputPid" placeholder="Payer ID">   
+                            </div>                            
+                        </div>
+
+                        <div class="form-group row col-md-12 pad-t-20">
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-user text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="firstName" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                    id="inputFnId" placeholder="First Name">   
+                            </div>
+
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-user text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="lastName" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                                    id="inputLnId" placeholder="Last Name">   
+                            </div>                            
+                        </div>
+                         
+                        <div class="form-group row col-md-10">
+                            <div class="input-group col-md-3">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-birthday-cake text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="dateOfBirth" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.dateOfBirth.errors }"
+                                    id="inputDobId" placeholder="Date of Birth">   
+                            </div>   
+                            <div class="pad-15"></div>
+                            <div ngbDropdown class="d-inline-block">
+                                <span class="btn btn-outline-info" id="genderOptionId" ngbDropdownToggle>{{selectedGender}}</span>
+                                <div ngbDropdownMenu aria-labelledby="genderOptionId">
+                                    <span class="dropdown-item" (click)="changeGender('Male')">Male</span>
+                                    <span class="dropdown-item" (click)="changeGender('Female')">Female</span>
+                                </div>
+                            </div>      
+                        </div>
+                        
+                        <div class="form-group row col-md-8 pad-t-20" >
+                            <div class="input-group col-md-6">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-envelope text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="email" formControlName="email" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                                    id="inputEmail" placeholder="Email">   
+                            </div> 
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-phone text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="phone" formControlName="mobile" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                                    id="mobileId" placeholder="Mobile Number">   
+                            </div>
+                        </div>
+
+                        <div class="form-group row col-md-12 pad-t-20">
+                            <div class="input-group col-md-2">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-address-card text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="zipCode" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.zipCode.errors }"
+                                    id="zipCodeId" placeholder="Zip Code">   
+                            </div>
+                            <div class="input-group col-md-2">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-address-card text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="state" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
+                                    id="stateId" placeholder="State">   
+                            </div> 
+                            <div class="input-group col-md-3">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-address-card text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="city" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+                                    id="cityId" placeholder="City">   
+                            </div>  
+                            <div class="input-group col-md-3">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="countryId">
+                                        <span class="fas fa-flag text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="country" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.country.errors }"
+                                    id="inputCountryId" placeholder="Country">   
+                            </div>                                                     
+                        </div>                            
+
+                    </div>
+                    <div class="pad-t-20">
+                    <span><a class="btn rounded-btn btn-info text-white" (click)="doRegister()">Register</a></span>
+                    <span class="pad-15"><a class="btn rounded-btn btn-info text-white" [routerLink]="['/home']">Cancel</a></span>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

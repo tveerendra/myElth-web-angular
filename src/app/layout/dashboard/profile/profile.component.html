@@ -1,0 +1,29 @@
+<div>
+
+  <div class="row" style="background-color:white">
+      <ul class="list-group list-group-flush" style="width:100%">
+          <li class="list-group-item list-group-item-light text-center" >
+            <i class="far fa-user-circle" style="font-size:187px; color: rgba(192, 183, 183, 0.15);"></i>
+          </li>
+          <li class="list-group-item list-group-item-info text-info font-weight-bold">Primary User</li>
+          <li class="list-group-item text-primary font-weight-bold text-uppercase">{{user.firstName}} {{user.lastName}}</li>
+
+        </ul> 
+  </div>
+
+  <div class="row" style="padding-top:20px;background-color: white" *ngIf="isDependents()">
+      <ul class="list-group list-group-flush" style="width:100%">
+        <li class="list-group-item list-group-item-light font-weight-bold">Dependent User(s)</li>
+      </ul> 
+      <ul class="list-group list-group-flush" style="width:100%" *ngFor="let dep of dependents">
+        <li class="list-group-item list-group-item-light text-uppercase">
+          <div>{{dep.firstName}} {{dep.lastName}}</div>
+          <span class="small text-capitalize">{{dep.relation}}</span>
+        </li>
+      </ul> 
+  
+  </div>  
+
+
+
+</div>
