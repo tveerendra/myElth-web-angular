@@ -13,6 +13,7 @@ export class MemberLoginComponent implements OnInit {
 
   loginType : string = 'Member';
   altLogin : string = 'Healthcare Professional';
+  empLogin : string = 'Employer';
   submitted : boolean = false;
   passwordType : string = 'password';
 
@@ -35,8 +36,15 @@ export class MemberLoginComponent implements OnInit {
 
   altLoginClicked(){
     var temp = this.loginType;
-    this.loginType = this.altLogin;
-    this.altLogin = temp;
+      this.loginType = this.altLogin;
+      this.altLogin = temp;
+  }
+
+  empLoginClicked(){
+    var temp = this.loginType;
+      this.loginType = this.empLogin;
+      this.empLogin = temp;
+    
   }
 
   togglePassword(){
@@ -78,6 +86,8 @@ export class MemberLoginComponent implements OnInit {
     var regType = 'consumer';
     if(this.loginType === 'Healthcare Professional'){
       regType = 'provider';
+    } else if(this.loginType === 'Employer'){
+      regType = 'employer';
     }
     this.router.navigate(['/home/register'], {queryParams: {type: regType}});
   }
