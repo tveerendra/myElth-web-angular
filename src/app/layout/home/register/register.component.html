@@ -45,7 +45,7 @@
                             </div>                            
                         </div>           
 
-                        <div class="form-group row col-md-12 pad-t-20" *ngIf="regType==='provider'">
+                        <div class="form-group row col-md-12 pad-t-20" *ngIf="regType==='provider' || regType==='employer'">
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
                                     <span class="input-group-text input-prepend-bgc" id="groupNumberId">
@@ -192,9 +192,13 @@
                         </div>                            
 
                     </div>
-                    <div class="pad-t-20">
-                    <span><a class="btn rounded-btn btn-info text-white" (click)="doRegister()">Register</a></span>
-                    <span class="pad-15"><a class="btn rounded-btn btn-info text-white" [routerLink]="['/home']">Cancel</a></span>
+                    <div class="pad-t-20" *ngIf="regType !='employer'">
+                        <span><a class="btn rounded-btn btn-info text-white" (click)="doRegister()">Register</a></span>
+                        <span class="pad-15"><a class="btn rounded-btn btn-info text-white" [routerLink]="['/home']">Cancel</a></span>
+                    </div>
+                    <div class="pad-t-20" *ngIf="regType==='employer'">
+                        <span><a class="btn rounded-btn btn-info text-white" (click)="doSubmit()">Register</a></span>
+                        <span class="pad-15"><a class="btn rounded-btn btn-info text-white" [routerLink]="['/home']">Cancel</a></span>
                     </div>
                 </form>
                 </div>

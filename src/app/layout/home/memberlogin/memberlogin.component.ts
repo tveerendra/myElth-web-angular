@@ -88,8 +88,11 @@ export class MemberLoginComponent implements OnInit {
       regType = 'provider';
     } else if(this.loginType === 'Employer'){
       regType = 'employer';
-    }
+    } 
+      
     this.router.navigate(['/home/register'], {queryParams: {type: regType}});
+    
+    
   }
 
 }

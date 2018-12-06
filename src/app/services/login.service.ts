@@ -29,4 +29,9 @@ export class LoginService {
               catchError(this.handleError('loginUser', []))
             );
   }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+  }
 }

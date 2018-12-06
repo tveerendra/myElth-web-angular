@@ -7,6 +7,9 @@ import { LoginService } from '../../../services/login.service';
 import { ZipDetailsService } from '../../../services/zipdetails.service';
 
 import { routerTransition } from './../../../router.animations';
+import { UsersService } from '../../../services/users.service';
+import { AlertService } from '../../../services/alert.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -20,12 +23,16 @@ export class RegisterComponent implements OnInit {
   regTypeTitle : string = 'Member';
   registerForm: FormGroup;
   selectedGender : string = 'Gender';
+  loading = false;
+  submitted = false;
 
   constructor(private router : Router, 
               private route : ActivatedRoute,
               private formBuilder: FormBuilder,
               config: NgbDropdownConfig,
               private loginService: LoginService,
+              private usersService: UsersService,
+              private alertService: AlertService,
               private zipDetailsService : ZipDetailsService) { }
 
   ngOnInit() {
@@ -56,10 +63,12 @@ export class RegisterComponent implements OnInit {
   }
 
   setFormTitle(){
-    if(this.regType === 'consumer'){
-      this.regTypeTitle = 'Member';
-    } else if(this.regType === 'provider'){
+    if(this.regType === 'provider'){
       this.regTypeTitle = 'Healthcare Professional';
+    } else if(this.regType === 'employer'){
+      this.regTypeTitle = 'Employer';
+    } else {
+      this.regTypeTitle = 'Member';
     }
   }
 
@@ -81,6 +90,28 @@ export class RegisterComponent implements OnInit {
       let cityValue = zipData.data.city;
       let stateValue = zipData.data.state;
     }
+  }
+
+  doSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+
+    this.loading = true;
+    this.usersService.registerEmployer(this.registerForm.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.alertService.success('Registration successful', true);
+                this.router.navigate(['/login']);
+            },
+            error => {
+                this.alertService.error(error);
+                this.loading = false;
+            });
   }
 
 }

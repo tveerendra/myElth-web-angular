@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { httpHeaders } from '../common/utils/'
+import { Employer } from '../models/employer';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +29,8 @@ export class UsersService {
               catchError(this.handleError('getDependentUsersList', []))
             );
   }  
+
+  registerEmployer(employer: Employer) {
+    return this.http.post(`http://18.233.238.38:3000/api/Employers`, employer);
+  }
 }
