@@ -5,7 +5,7 @@
             <div class="card box-shadow" style="background: #f7f7f7 none repeat scroll 0 0;">
                 <div style="padding:30px 30px 30px 30px">
                 <form id="registerFormId" [formGroup]="registerForm" (ngSubmit)="register()">
-                    <div class="form-content ">
+                    <div class="form-content" >
                         <div class="form-group col-md-12 row">
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
@@ -17,9 +17,11 @@
                                     class="form-control" 
                                     [ngClass]="{ 'is-invalid': submitted && f.userId.errors }"
                                     id="inputUserId" placeholder="User Id">   
+                                <div *ngIf="submitted && f.userId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.userId.errors.required">User Id is required</div>
+                                </div>
                             </div>                            
-                        </div>
-
+                        </div>                       
                         <div class="form-group row col-md-12">
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
@@ -31,6 +33,9 @@
                                     class="form-control input-lg" 
                                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
                                     id="passwordId" name="password" placeholder="Password" data-toggle="password">
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                </div>
                             </div>
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
@@ -43,9 +48,19 @@
                                     [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
                                     id="confirmPasswordId" name="password" placeholder="Confirm Password" data-toggle="password">
                             </div>                            
-                        </div>           
-
+                        </div>      
                         <div class="form-group row col-md-12 pad-t-20" *ngIf="regType==='provider' || regType==='employer'">
+                            <div class="input-group col-md-4">
+                                    <div class="input-group-prepend input-prepend-bgc">
+                                        <span class="input-group-text input-prepend-bgc" id="employerNameId">
+                                            <span class="fas fa-users text-info" aria-hidden="true"></span>            
+                                        </span>
+                                    </div>       
+                                    <input type="text" formControlName="employerName" 
+                                        class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.employerName.errors }"
+                                        id="inputGnId" placeholder="Employer Name">   
+                                </div>   
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
                                     <span class="input-group-text input-prepend-bgc" id="groupNumberId">
@@ -57,8 +72,18 @@
                                     [ngClass]="{ 'is-invalid': submitted && f.groupNumber.errors }"
                                     id="inputGnId" placeholder="Group Number">   
                             </div>
-
                             <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="accountNumberId">
+                                        <span class="fas fa-users text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="accountNumber" 
+                                    class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.accountNumber.errors }"
+                                    id="inputGnId" placeholder="Account Number">   
+                            </div>   
+                            <div class="input-group col-md-4"  *ngIf="regType!='employer'">
                                 <div class="input-group-prepend input-prepend-bgc">
                                     <span class="input-group-text input-prepend-bgc" id="payerId">
                                         <span class="fas fa-user-md text-info" aria-hidden="true"></span>            
@@ -83,7 +108,16 @@
                                     [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
                                     id="inputFnId" placeholder="First Name">   
                             </div>
-
+                            <div class="input-group col-md-4">
+                                <div class="input-group-prepend input-prepend-bgc">
+                                    <span class="input-group-text input-prepend-bgc" id="basic-u1">
+                                        <span class="fas fa-user text-info" aria-hidden="true"></span>            
+                                    </span>
+                                </div>       
+                                <input type="text" formControlName="middleName" 
+                                    class="form-control" 
+                                    id="inputLnId" placeholder="Middle Name">   
+                            </div> 
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
                                     <span class="input-group-text input-prepend-bgc" id="basic-u1">
@@ -98,10 +132,10 @@
                         </div>
                          
                         <div class="form-group row col-md-10">
-                            <div class="input-group col-md-3">
+                            <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
                                     <span class="input-group-text input-prepend-bgc" id="basic-u1">
-                                        <span class="fas fa-birthday-cake text-info" aria-hidden="true"></span>            
+                                        <span class="fas fa-birthday-cake text-info" aria-hidden="false"></span>            
                                     </span>
                                 </div>       
                                 <input type="text" formControlName="dateOfBirth" 
@@ -110,8 +144,8 @@
                                     id="inputDobId" placeholder="Date of Birth">   
                             </div>   
                             <div class="pad-15"></div>
-                            <div ngbDropdown class="d-inline-block">
-                                <span class="btn btn-outline-info" id="genderOptionId" ngbDropdownToggle>{{selectedGender}}</span>
+                            <div ngbDropdown class="d-inline-block" >
+                                <span class="btn btn-outline-info" id="genderOptionId"  ngbDropdownToggle>{{selectedGender}}</span>
                                 <div ngbDropdownMenu aria-labelledby="genderOptionId">
                                     <span class="dropdown-item" (click)="changeGender('Male')">Male</span>
                                     <span class="dropdown-item" (click)="changeGender('Female')">Female</span>
@@ -130,7 +164,7 @@
                                     class="form-control" 
                                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
                                     id="inputEmail" placeholder="Email">   
-                            </div> 
+                            </div>  
                             <div class="input-group col-md-4">
                                 <div class="input-group-prepend input-prepend-bgc">
                                     <span class="input-group-text input-prepend-bgc" id="basic-u1">

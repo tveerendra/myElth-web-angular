@@ -21,8 +21,8 @@ export class RegisterComponent implements OnInit {
 
   regType : string = 'consumer';
   regTypeTitle : string = 'Member';
-  registerForm: FormGroup;
   selectedGender : string = 'Gender';
+  registerForm: FormGroup;
   loading = false;
   submitted = false;
 
@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
       firstName: ['', Validators.required],
+      middleName: [''],
       lastName: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       gender: ['', ],
@@ -56,6 +57,8 @@ export class RegisterComponent implements OnInit {
       city: ['', Validators.required],
       country: [''],
       groupNumber:[''],
+      employerName:[''],
+      accountNumber:[''],
       payerID:['']
     });
 
